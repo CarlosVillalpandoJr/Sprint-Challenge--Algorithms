@@ -3,13 +3,13 @@
 ## Exercise I
 
 a) O(n)
+O(n) because its constanstly grows depending on input size
 
-
-b) O(nlog(n))
-
+b) O(n^2)
+having two loops nested causes n squared time
 
 c) O(n)
-
+The time increase when the number of inputs does
 ## Exercise II
 - stories = n
 - stories >= f == egg broken
