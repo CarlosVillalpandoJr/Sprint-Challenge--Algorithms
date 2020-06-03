@@ -97,8 +97,36 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        pass
+        while True:
+            #starts at 0 so swap to pick up the first item
+            self.swap_item()
+            # if the robot can move right then move_right
+            if self.can_move_right() == True:
+                self.move_right()
+                # if the held card is greater, then swap cards and turn on the light
+                if self.compare_item() == 1:
+                    self.swap_item()
+                    self.set_light_on()
+                #Robot is now holding a smaller card so move left and swap_items with the empty space
+                self.move_left()
+                self.swap_item()
+                #Robot is now holding nothing so move_right to the next position and run again
+                self.move_right()
+            #else if you cannot move right the move all the way to the left of the list to run this again until sorted
+            else:
+                #If None in the list, swap it out
+                if self.compare_item() == None:
+                    self.swap_item()
+                #if the light is off, that means the light is sorted
+                if not self.light_is_on():
+                    break
+                #reset the light
+                self.set_light_off()
+                #move to the beginning of the list
+                while self.can_move_left() == True:
+                    self.move_left()
 
+                
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
@@ -110,3 +138,20 @@ if __name__ == "__main__":
 
     robot.sort()
     print(robot._list)
+
+# 
+
+# Robot can move left or right
+    # Robot can move towards the beginning or end of the array
+
+# Robot can pick pick up item
+    # robot can grab a specific element with its index
+
+# If it tries to pick up an item while already holding one, it will swap the items instead
+    # if the item the robot is hold is < item that is next to it it will swap those items
+    # possibly use nested for
+
+# it can switch a light on its head on or off
+    # when switch occurs turn light on
+
+# Sounds like a bubblesort
